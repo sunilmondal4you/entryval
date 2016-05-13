@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Element entry and validations</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+    <!--jquery-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- bootstrap-->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--angular-->
+    <script src="bower_components/angular/angular.min.js"></script>
+
+
+    <script src="index.js"></script>
+</head>
+<body ng-controller="myctrl">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">User <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 bg-warning">
+            <h2><span class="glyphicon glyphicon-star"></span>My Images</h2>
+            <img src="images/IMG-20160410-WA0010.jpg" class="img-rounded col-md-6">
+            <img src="images/IMG-20160410-WA0026.jpg" class="img-rounded col-md-6">
+            <img src="images/IMG-20160410-WA0040.jpg" class="img-circle col-md-6">
+            <img src="images/IMG-20160410-WA0040.jpg" class="img-circle col-md-6">
+            <img src="images/IMG-20160408-WA0002.jpg" class="img-thumbnail col-md-6">
+            <img src="images/IMG-20160410-WA0022.jpg" class="img-thumbnail col-md-6">
+        </div>
+        <div class="col-md-6 bg-info">
+            <div class="row" style="margin-top: 40px; ">
+                <div class="col-md-8 col-md-offset-2 bg-primary" style="padding-top: 30px; padding-bottom: 15px;">
+                    <form class="form-horizontal" >
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" placeholder="username" ng-model="user.username">
+                            </div>
+                         </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile" class="col-sm-2 control-label">Mobile no.</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="mobile" placeholder="mobile no" ng-model="user.mobile">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" ng-if="editr" ng-click="updater($index);">Update </button>
+                                <button type="submit" class="btn btn-default" ng-if="!editr" ng-click="saver();">Save </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 25px">
+                <div class="col-md-10 col-md-offset-1 bg-danger">
+                    <h2>Information in Table</h2>
+                    <table class="table">
+                        <tr>
+                            <th>Sl no</th>
+                            <th>Username</th>
+                            <th>Email Id</th>
+                            <th> Mobile</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr ng-repeat="dtl in userlist">
+                            <td>{{$index}}</td>
+                            <td>{{dtl.username}}</td>
+                            <td>{{dtl.email}}</td>
+                            <td>{{dtl.mobile}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning" ng-click="editer(dtl)">Edit</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="delete(dtl)">Delete</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 bg-danger">
+            right allignment
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
